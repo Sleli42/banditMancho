@@ -16,16 +16,15 @@ const Wrapper = styled.section`
   background: papayawhip;
 `;
 
-export const App = ({ items, actions }) =>
+export const App = ({ items }) =>
   <Wrapper>
     <Title>Bandit mancho</Title>
-    <ListItems items={items} actions={actions} />
+    <ListItems items={items} />
   </Wrapper>
 ;
 
 App.propTypes = {
-  items: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
+  state: PropTypes.object,
 };
 
 const mapStateToProps = state => state;

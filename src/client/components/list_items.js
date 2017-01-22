@@ -12,17 +12,16 @@ export const ItemContainer = styled.ul`
   margin: 0;
 `;
 
-const ListItems = ({ items, actions }) =>
+const ListItems = ({ items }) =>
   <ItemContainer>
     {
-      items.map(item => <CurrItem item={item} actions={actions} key={item.id} />)
+      items.map(item => <CurrItem item={item} key={item.id} />)
     }
   </ItemContainer>
 ;
 
 ListItems.propTypes = {
   items: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
 };
 
 export default ListItems;

@@ -17,18 +17,22 @@ TitleItem.propTypes = {
   color: PropTypes.string.isRequired,
 };
 
-export const Item = ({ item, actions }) => {
-  actions.loadedItem(item);
+const Spin = () => <i className="fa fa-spinner fa-spin fa-3x fa-fw" />;
+
+export const Item = ({ item }) => {
   return (
     <Area>
-      <TitleItem name={item.icon} color={item.color} />
+      {
+      item.icon && item.color
+      ? <TitleItem name={item.icon} color={item.color} />
+      : <Spin />
+    }
     </Area>
   );
 };
 
 Item.propTypes = {
   item: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired,
 };
 
 export default Item;

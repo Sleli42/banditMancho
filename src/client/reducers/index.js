@@ -1,14 +1,18 @@
-import { ITEMS_LOADED } from '../actions';
+import { ITEM_LOADED, FINAL_ITEMS } from '../actions';
 
-const itemsReducer = (state = [], action) => {
-  // const { payload } = action;
-  // console.log('payload: ', payload);
+const items = (state = [], action) => {
+  const { payload } = action;
+  const { items } = state;
   switch (action.type) {
-    case ITEMS_LOADED:
-      // console.log('state: ', state);
+    case ITEM_LOADED:
+      const newState = { items: items.map(item => ((item.id === payload.id) ? payload : item)) }
+      return newState;
+    case FINAL_ITEMS:
+      const finalState = { items: items.map(item => ({ ...payload, id: item.id })) }
+      return finalState;
+    default:
       return state;
-    default: return state;
   }
 };
 
-export default itemsReducer;
+export default items;
